@@ -7,9 +7,10 @@ socketCliente = socket(AF_INET, SOCK_DGRAM) # criando o socket do cliente
 arquivo = open("TesteTXT.txt", "rt") # abrindo o arquivo
 conteudo = arquivo.read() # salvando o conteúdo do arquivo
 arquivo.close() # fechando o arquivo
+
 socketCliente.sendto(conteudo.encode(),(nomeServidor, portaServidor)) #  através do socket UDP, o cliente manda pro servidor
-                                                                      #  uma string transformada em bytes. O servidor é identificado
-                                                                      #  pelo IP (adquirido pelo nome) e pela porta.
+                                                                    #  uma string transformada em bytes. O servidor é identificado
+                                                                    #  pelo IP (adquirido pelo nome) e pela porta.
 contrecebido, endServidor = socketCliente.recvfrom(34)  # recebemos o conteúdo enviado pelo servidor
                                                         # o arquivo TesteTXT.txt tem tamanho de 34 bytes
 e1, e2 = endServidor # e1 é o endereço IP do servidor e e2 a porta pela qual ele se comunica com o cliente
